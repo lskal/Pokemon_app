@@ -13,7 +13,6 @@ export const PokemonProductPage = () => {
     setFavorites,
     mainImage,
     setMainImage,
-    pokemon,
     pokemonDetails,
     fetchPokemonDetails,
   } = useAppContext();
@@ -50,7 +49,6 @@ export const PokemonProductPage = () => {
           mainImage={mainImage}
           setMainImage={setMainImage}
         />
-
       </div>
     </div>
   );
