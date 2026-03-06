@@ -1,46 +1,99 @@
-# Getting Started with Create React App
+# Pokemon App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+The project uses **Yarn** as the package manager, managed via **Corepack**.
 
-In the project directory, you can run:
+---
 
-### `yarn start`
+# Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Enable Corepack and activate Yarn:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+corepack enable
+corepack prepare yarn@stable --activate
+```
 
-### `yarn test`
+Install dependencies:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn install
+```
 
-### `yarn build`
+Start the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The application will be available at:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+http://localhost:3000
 
-### `yarn eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Available Scripts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Start development server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Runs the app in development mode.
+The page reloads automatically when files change.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Run tests
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+yarn test
+```
+
+Runs the test runner in watch mode.
+
+---
+
+### Build for production
+
+```
+yarn build
+```
+
+Creates an optimized production build in the `build` folder.
+
+---
+
+# Reset Dependencies
+
+If dependencies become corrupted or the project stops compiling correctly, you can perform a clean reset:
+
+```
+rm -rf node_modules yarn.lock build
+yarn cache clean
+yarn install
+yarn start
+```
+
+---
+
+# Eject
+
+```
+yarn eject
+```
+
+This exposes the underlying build configuration (Webpack, Babel, ESLint).
+This operation is **irreversible**.
+
+---
+
+# Learn More
+
+Create React App documentation
+https://create-react-app.dev/
+
+React documentation
+https://react.dev/
