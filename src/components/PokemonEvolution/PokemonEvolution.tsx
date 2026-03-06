@@ -8,11 +8,7 @@ interface PokemonEvolutionProps {
   setMainImage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const PokemonEvolution = ({
-  pokemonId,
-  mainImage,
-  setMainImage,
-}: PokemonEvolutionProps) => {
+export const PokemonEvolution = ({ pokemonId, mainImage, setMainImage }: PokemonEvolutionProps) => {
   const [pokemonEvolution, setPokemonEvolution] = useState<any>(null);
 
   useEffect(() => {
@@ -40,9 +36,7 @@ export const PokemonEvolution = ({
         {pokemonEvolution.EvolutionImages.map((item: any, index: number) => (
           <img
             key={index}
-            className={`evolution_img ${
-              mainImage === item.image ? 'active' : ''
-            }`}
+            className={`evolution_img ${mainImage === item.image ? 'active' : ''}`}
             src={item.image}
             alt="evolution"
             onClick={() => setMainImage(item.image)}

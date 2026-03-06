@@ -1,18 +1,7 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useEffect,
-} from "react";
-import {
-  CartItem,
-  FavoriteItem,
-  PokemonDetailsObject,
-  PokemonFinalObject,
-} from "../type/appTypes";
-import { getPokemon } from "../hooks/getPokemon";
-import { getPokemonDetails } from "../hooks/getPokemonDetails";
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { CartItem, FavoriteItem, PokemonDetailsObject, PokemonFinalObject } from '../type/appTypes';
+import { getPokemon } from '../hooks/getPokemon';
+import { getPokemonDetails } from '../hooks/getPokemonDetails';
 
 type AppContextType = {
   cart: CartItem[];
@@ -40,15 +29,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [favorites, setFavorites] = useState<FavoriteItem[]>([]);
   const [shoppingCartValue, setShoppingCartValue] = useState<number>(0);
-  const [mainImage, setMainImage] = useState<string>("");
+  const [mainImage, setMainImage] = useState<string>('');
   const [pokemon, setPokemon] = useState<PokemonFinalObject[]>();
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [allFiltersClicked, setAllFiltersClicked] = useState<boolean>(false);
-  const [pokemonDetails, setPokemonDetails] =
-    useState<PokemonDetailsObject | null>(null);
-  const [pokemonDetailsMap, setPokemonDetailsMap] = useState<
-    Record<number, PokemonDetailsObject>
-  >({});
+  const [pokemonDetails, setPokemonDetails] = useState<PokemonDetailsObject | null>(null);
+  const [pokemonDetailsMap, setPokemonDetailsMap] = useState<Record<number, PokemonDetailsObject>>(
+    {},
+  );
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -60,12 +48,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         }));
 
         setPokemon((prev) =>
-          pageNumber === 1
-            ? pokemonWithPrice
-            : [...(prev ?? []), ...pokemonWithPrice]
+          pageNumber === 1 ? pokemonWithPrice : [...(prev ?? []), ...pokemonWithPrice],
         );
       } catch (err) {
-        console.error("Error fetching Pokemon:", err);
+        console.error('Error fetching Pokemon:', err);
       }
     };
 
@@ -79,7 +65,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
       setPokemonDetails(data);
     } catch (err) {
-      console.error("Error fetching Pokemon details:", err);
+      console.error('Error fetching Pokemon details:', err);
     }
   };
 
@@ -95,7 +81,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         [id]: data,
       }));
     } catch (err) {
-      console.error("Error fetching Pokémon details:", err);
+      console.error('Error fetching Pokémon details:', err);
     }
   };
 
@@ -128,7 +114,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
 export const useAppContext = () => {
   const context = useContext(AppContext);
-  if (!context)
-    throw new Error("useAppContext must be used inside AppProvider");
+  if (!context) throw new Error('useAppContext must be used inside AppProvider');
   return context;
 };

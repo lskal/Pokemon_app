@@ -1,4 +1,4 @@
-import { PokemonSpecies } from "../type/appTypes";
+import { PokemonSpecies } from '../type/appTypes';
 
 function extractEvolutionNames(chain: any, arr: string[] = []) {
   arr.push(chain.species.name);
@@ -37,7 +37,7 @@ export async function getEvolutionChain(id: number): Promise<any> {
         return {
           name,
           image:
-            evoData.sprites?.other?.["official-artwork"]?.front_default ||
+            evoData.sprites?.other?.['official-artwork']?.front_default ||
             evoData.sprites?.other?.home?.front_default ||
             evoData.sprites?.front_default ||
             null,
@@ -51,7 +51,7 @@ export async function getEvolutionChain(id: number): Promise<any> {
       EvolutionImages,
     };
   } catch (error) {
-    console.error("Error in getPokemonDetails:", error);
+    console.error('Error in getPokemonDetails:', error);
     return null;
   }
 }

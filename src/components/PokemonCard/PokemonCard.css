@@ -96,14 +96,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   color: #1f1f24;
   text-transform: uppercase;
 }
 
 .pokemon_price {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   color: #1f1f24;

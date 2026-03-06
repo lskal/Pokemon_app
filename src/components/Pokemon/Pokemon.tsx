@@ -1,40 +1,34 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { PokemonCard } from "../PokemonCard/PokemonCard";
-import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import { BsSliders } from "react-icons/bs";
-import { MdClear } from "react-icons/md";
-import { useAppContext } from "../../context/AppContext";
-import "./Pokemon.css";
-import { PokemonTypes } from "../../type/appTypes";
-import { MultiRangeSlider } from "../MultiRangeSlider/MultiRangeSlider";
+import React, { useEffect, useMemo, useState } from 'react';
+import { PokemonCard } from '../PokemonCard/PokemonCard';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
+import { BsSliders } from 'react-icons/bs';
+import { MdClear } from 'react-icons/md';
+import { useAppContext } from '../../context/AppContext';
+import './Pokemon.css';
+import { PokemonTypes } from '../../type/appTypes';
+import { MultiRangeSlider } from '../MultiRangeSlider/MultiRangeSlider';
 
-type FilterType =
-  | "NONE"
-  | "AZ"
-  | "ZA"
-  | "FAVORITES"
-  | "Price(High to Low)"
-  | "Price(Low to High)";
+type FilterType = 'NONE' | 'AZ' | 'ZA' | 'FAVORITES' | 'Price(High to Low)' | 'Price(Low to High)';
 
 const ALL_POKEMON_TYPES: PokemonTypes[] = [
-  "fire",
-  "water",
-  "grass",
-  "electric",
-  "ice",
-  "dragon",
-  "dark",
-  "fairy",
-  "normal",
-  "fighting",
-  "flying",
-  "poison",
-  "ground",
-  "rock",
-  "bug",
-  "ghost",
-  "steel",
-  "psychic",
+  'fire',
+  'water',
+  'grass',
+  'electric',
+  'ice',
+  'dragon',
+  'dark',
+  'fairy',
+  'normal',
+  'fighting',
+  'flying',
+  'poison',
+  'ground',
+  'rock',
+  'bug',
+  'ghost',
+  'steel',
+  'psychic',
 ];
 
 export const Pokemon = () => {
@@ -52,7 +46,7 @@ export const Pokemon = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterDropDownOpen, setFilterDropDownOpen] = useState(false);
   const [filterDropDownPriceOpen, setFilterDropDownPriceOpen] = useState(false);
-  const [activeFilter, setActiveFilter] = useState<FilterType>("NONE");
+  const [activeFilter, setActiveFilter] = useState<FilterType>('NONE');
   const [selectedType, setSelectedType] = useState<PokemonTypes | null>(null);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
 
@@ -66,41 +60,28 @@ export const Pokemon = () => {
     let result = [...pokemon];
 
     if (selectedType) {
-      result = result.filter((p) =>
-        pokemonDetailsMap[p.id]?.types?.includes(selectedType)
-      );
+      result = result.filter((p) => pokemonDetailsMap[p.id]?.types?.includes(selectedType));
     }
 
-    result = result.filter(
-      (p) => p.price >= priceRange.min && p.price <= priceRange.max
-    );
+    result = result.filter((p) => p.price >= priceRange.min && p.price <= priceRange.max);
 
     switch (activeFilter) {
-      case "AZ":
+      case 'AZ':
         return result.sort((a, b) => a.name.localeCompare(b.name));
-      case "ZA":
+      case 'ZA':
         return result.sort((a, b) => b.name.localeCompare(a.name));
-      case "FAVORITES": {
-        const favIds = new Set(
-          favorites.filter((f) => f.favorite).map((f) => f.id)
-        );
+      case 'FAVORITES': {
+        const favIds = new Set(favorites.filter((f) => f.favorite).map((f) => f.id));
         return result.filter((p) => favIds.has(p.id));
       }
-      case "Price(High to Low)":
+      case 'Price(High to Low)':
         return result.sort((a, b) => b.price - a.price);
-      case "Price(Low to High)":
+      case 'Price(Low to High)':
         return result.sort((a, b) => a.price - b.price);
       default:
         return result;
     }
-  }, [
-    pokemon,
-    favorites,
-    activeFilter,
-    selectedType,
-    pokemonDetailsMap,
-    priceRange,
-  ]);
+  }, [pokemon, favorites, activeFilter, selectedType, pokemonDetailsMap, priceRange]);
 
   const handleClearAll = () => {
     setSelectedType(null);
@@ -112,10 +93,7 @@ export const Pokemon = () => {
       <div className="pokemon_title">Pokemon</div>
 
       <div className="filters_container">
-        <div
-          className="filters_left"
-          onClick={() => setAllFiltersClicked(true)}
-        >
+        <div className="filters_left" onClick={() => setAllFiltersClicked(true)}>
           <BsSliders />
           All Filters
         </div>
@@ -125,33 +103,30 @@ export const Pokemon = () => {
 
           <div className="order_by_container">
             <span>Order by:</span>
-            <span>{activeFilter === "NONE" ? "A–Z" : activeFilter}</span>
+            <span>{activeFilter === 'NONE' ? 'A–Z' : activeFilter}</span>
             <div onClick={() => setFilterOpen((p) => !p)}>
               {filterOpen ? <SlArrowUp /> : <SlArrowDown />}
             </div>
 
             {filterOpen && (
               <div className="dropdown">
-                <div onClick={() => setActiveFilter("AZ")} className="AZ">
+                <div onClick={() => setActiveFilter('AZ')} className="AZ">
                   A–Z
                 </div>
-                <div onClick={() => setActiveFilter("ZA")} className="ZA">
+                <div onClick={() => setActiveFilter('ZA')} className="ZA">
                   Z–A
                 </div>
-                <div
-                  onClick={() => setActiveFilter("FAVORITES")}
-                  className="favorites"
-                >
+                <div onClick={() => setActiveFilter('FAVORITES')} className="favorites">
                   Favorites
                 </div>
                 <div
-                  onClick={() => setActiveFilter("Price(High to Low)")}
+                  onClick={() => setActiveFilter('Price(High to Low)')}
                   className="pricehigh_low"
                 >
                   Price(High to Low)
                 </div>
                 <div
-                  onClick={() => setActiveFilter("Price(Low to High)")}
+                  onClick={() => setActiveFilter('Price(Low to High)')}
                   className="pricelow_high"
                 >
                   Price(Low to High)
@@ -163,20 +138,11 @@ export const Pokemon = () => {
       </div>
 
       {allFiltersClicked && (
-        <div
-          className="allfilters_overlay"
-          onClick={() => setAllFiltersClicked(false)}
-        >
-          <div
-            className="allfilters_options"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="allfilters_overlay" onClick={() => setAllFiltersClicked(false)}>
+          <div className="allfilters_options" onClick={(e) => e.stopPropagation()}>
             <div className="filters_header">
               <h2 className="filters_title">Filters</h2>
-              <button
-                className="filters_close"
-                onClick={() => setAllFiltersClicked(false)}
-              >
+              <button className="filters_close" onClick={() => setAllFiltersClicked(false)}>
                 <MdClear />
               </button>
             </div>
@@ -196,14 +162,8 @@ export const Pokemon = () => {
                     {ALL_POKEMON_TYPES.map((type) => (
                       <div
                         key={type}
-                        className={`type_filter_item ${
-                          selectedType === type ? "active" : ""
-                        }`}
-                        onClick={() =>
-                          setSelectedType((prev) =>
-                            prev === type ? null : type
-                          )
-                        }
+                        className={`type_filter_item ${selectedType === type ? 'active' : ''}`}
+                        onClick={() => setSelectedType((prev) => (prev === type ? null : type))}
                       >
                         {type}
                       </div>
@@ -216,9 +176,7 @@ export const Pokemon = () => {
                 <div className="price_filter_section">
                   <div
                     className="filter_price_container"
-                    onClick={() =>
-                      setFilterDropDownPriceOpen(!filterDropDownPriceOpen)
-                    }
+                    onClick={() => setFilterDropDownPriceOpen(!filterDropDownPriceOpen)}
                   >
                     <h3>Price</h3>
                     {filterDropDownPriceOpen ? <SlArrowUp /> : <SlArrowDown />}
@@ -241,10 +199,7 @@ export const Pokemon = () => {
               <button className="clearAll" onClick={handleClearAll}>
                 Clear All
               </button>
-              <button
-                className="seeResults"
-                onClick={() => setAllFiltersClicked(false)}
-              >
+              <button className="seeResults" onClick={() => setAllFiltersClicked(false)}>
                 See Results
               </button>
             </div>

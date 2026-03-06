@@ -2,8 +2,9 @@
   font-size: 20px;
   line-height: 1.2;
   padding: 16px 0 2px;
-  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
-    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family:
+    'Oswald', 'HelveticaNeueBold', 'Helvetica Neue', 'TeXGyreHerosBold', 'Helvetica', 'Tahoma',
+    'Geneva', 'Arial', sans-serif;
   font-weight: 500;
   font-size: 34px;
   line-height: 1;
@@ -30,8 +31,9 @@
   margin-bottom: 14px;
   min-height: 40px;
   border-radius: 1px;
-  font-family: "Oswald", "HelveticaNeueBold", "Helvetica Neue",
-    "TeXGyreHerosBold", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+  font-family:
+    'Oswald', 'HelveticaNeueBold', 'Helvetica Neue', 'TeXGyreHerosBold', 'Helvetica', 'Tahoma',
+    'Geneva', 'Arial', sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
@@ -45,7 +47,7 @@
 
 .total,
 .shipping_fees {
-  font-family: "Lato", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: 'Lato', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;

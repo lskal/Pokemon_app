@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import pokemonApiCall from "../../api/pokemonApiCall";
-import { useNavigate } from "react-router-dom";
-import "./Search.css";
+import React, { useEffect, useState } from 'react';
+import pokemonApiCall from '../../api/pokemonApiCall';
+import { useNavigate } from 'react-router-dom';
+import './Search.css';
 
 type PokemonListItem = {
   name: string;
@@ -9,7 +9,7 @@ type PokemonListItem = {
 };
 
 export const Search = () => {
-  const [pokQuery, setPokQuery] = useState("");
+  const [pokQuery, setPokQuery] = useState('');
   const [allPokemon, setAllPokemon] = useState<PokemonListItem[]>([]);
   const [results, setResults] = useState<PokemonListItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -17,16 +17,16 @@ export const Search = () => {
   const navigate = useNavigate();
 
   const IMAGE_NOTFOUND_PLACEHOLDER =
-    "https://nftcalendar.io/storage/uploads/2022/02/21/image-not-found_0221202211372462137974b6c1a.png";
+    'https://nftcalendar.io/storage/uploads/2022/02/21/image-not-found_0221202211372462137974b6c1a.png';
 
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
         setLoading(true);
-        const res = await pokemonApiCall.get("pokemon?limit=1350");
+        const res = await pokemonApiCall.get('pokemon?limit=1350');
         setAllPokemon(res.data.results);
       } catch (error) {
-        console.error("Failed to fetch Pokémon list");
+        console.error('Failed to fetch Pokémon list');
       } finally {
         setLoading(false);
       }
@@ -42,14 +42,14 @@ export const Search = () => {
     }
 
     const filtered = allPokemon.filter((pokemon) =>
-      pokemon.name.startsWith(pokQuery.toLowerCase())
+      pokemon.name.startsWith(pokQuery.toLowerCase()),
     );
 
     setResults(filtered.slice(0, 6));
   }, [pokQuery, allPokemon]);
 
   const getPokemonId = (url: string) => {
-    return url.split("/").filter(Boolean).pop();
+    return url.split('/').filter(Boolean).pop();
   };
 
   return (
@@ -83,15 +83,11 @@ export const Search = () => {
                   src={imageUrl}
                   alt={pokemon.name}
                   loading="lazy"
-                  onError={(e) =>
-                    (e.currentTarget.src = IMAGE_NOTFOUND_PLACEHOLDER)
-                  }
+                  onError={(e) => (e.currentTarget.src = IMAGE_NOTFOUND_PLACEHOLDER)}
                 />
               </div>
 
-              <div className="title">
-                {pokemon.name.toUpperCase()}
-              </div>
+              <div className="title">{pokemon.name.toUpperCase()}</div>
             </div>
           );
         })}

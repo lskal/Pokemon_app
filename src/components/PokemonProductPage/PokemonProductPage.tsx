@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import "./PokemonProductPage.css";
-import { SideBarLeft } from "../SideBarLeft/SideBarLeft";
-import { SideBarRight } from "../SideBarRight/SideBarRight";
-import { useParams } from "react-router-dom";
-import { useAppContext } from "../../context/AppContext";
+import React, { useEffect } from 'react';
+import './PokemonProductPage.css';
+import { SideBarLeft } from '../SideBarLeft/SideBarLeft';
+import { SideBarRight } from '../SideBarRight/SideBarRight';
+import { useParams } from 'react-router-dom';
+import { useAppContext } from '../../context/AppContext';
 
 export const PokemonProductPage = () => {
   const {

@@ -1,9 +1,7 @@
-import axios from "axios";
-import { PokemonResultsData } from "../type/appTypes";
+import axios from 'axios';
+import { PokemonResultsData } from '../type/appTypes';
 
-export const normalizePokemonDetails = async (
-  PokemongenOne: PokemonResultsData
-) => {
+export const normalizePokemonDetails = async (PokemongenOne: PokemonResultsData) => {
   const PokemonId = PokemongenOne.id;
   const name = PokemongenOne.name;
   const retrieveDetailsObject = PokemongenOne.species.url;

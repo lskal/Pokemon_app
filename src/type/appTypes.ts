@@ -1,8 +1,8 @@
 export enum AppUrls {
-  HOME = "/home",
-  POKEMON = "/pokemon",
-  POKEMON_DETAILS = "/pokemon/pokemon_details",
-  POKEMON_FAVORITES = "/favorites",
+  HOME = '/home',
+  POKEMON = '/pokemon',
+  POKEMON_DETAILS = '/pokemon/pokemon_details',
+  POKEMON_FAVORITES = '/favorites',
 }
 
 export interface SearchBarProps {
@@ -319,24 +319,24 @@ export interface PokemonTypesObject {
 }
 
 export type PokemonTypes =
-  | "fire"
-  | "water"
-  | "grass"
-  | "electric"
-  | "ice"
-  | "dragon"
-  | "dark"
-  | "fairy"
-  | "normal"
-  | "fighting"
-  | "flying"
-  | "poison"
-  | "ground"
-  | "rock"
-  | "bug"
-  | "ghost"
-  | "steel"
-  | "psychic";
+  | 'fire'
+  | 'water'
+  | 'grass'
+  | 'electric'
+  | 'ice'
+  | 'dragon'
+  | 'dark'
+  | 'fairy'
+  | 'normal'
+  | 'fighting'
+  | 'flying'
+  | 'poison'
+  | 'ground'
+  | 'rock'
+  | 'bug'
+  | 'ghost'
+  | 'steel'
+  | 'psychic';
 
 export interface PokemonDetailsObject {
   id: number;

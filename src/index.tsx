@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { AppProvider } from "./context/AppContext";
+import { AppProvider } from './context/AppContext';
 import './index.css';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
@@ -15,7 +13,5 @@ root.render(
         <App />
       </AppProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
-
-
